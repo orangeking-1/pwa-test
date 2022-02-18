@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="./manifest.json?v=13">
+  <title>Document</title>
+  <style>
+    .title {
+      font-size: 30px;
+      text-align: center;
+    }
+    .tlc {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="title">
+    PWA DEMO
+  </div>
+  <div class="tlc">
+    <img src="/icon2.png" alt="">
+  </div>
+  <div>
+    <h3>消息通知：</h3>
+    <button id="btn">测试消息通知</button>
+  </div>
+</body>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js?v=17')
+  }
+
+
+  document.getElementById('btn').addEventListener('click', function() {
+    // Notification.requestPermission().then(res => {
+      // console.log(res)
+      // if (res === 'granted') {
+        setTimeout(function() {
+          new Notification('标题', {
+            body: '内容',
+            icon: './icon.png'
+          })
+        }, 2000)
+
+      // }
+    // })
+  })
+</script>
+</html>
